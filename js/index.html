@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Reviews Slideshow</title>
+    <!-- Link Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        /* Additional CSS styles for your slider */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide contents vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .user-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .user-info span {
+            font-size: 12px;
+            color: #777;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .heading span {
+            color: #ff7f50;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div id="menu-bars" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <!-- Navbar content -->
+    </nav>
+</header>
+
+<section class="review" id="review"> 
+    <h1 class="heading">Client's <span>Review</span></h1>
+    <div class="swiper-container review-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide box">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="images/pic-1.png" alt="">
+                    <div class="user-info">
+                        <h3>Joe Njogu</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+                <p>We have been using Amazing Memories Limited to plan and execute our company's events and have been completely satisfied with their performance. They do an excellent job from the event conceptualization to set up.</p>
+            </div>
+            <div class="swiper-slide box">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="images/pic-2.png" alt="">
+                    <div class="user-info">
+                        <h3>Esther Eve</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+                <p>We have been using Amazing Memories Limited to plan and execute our company's events and have been completely satisfied with their performance. They do an excellent job from the event conceptualization to set up. They are always punctual, reliable, and work with precision and determination to deliver beyond the client's expectations.</p>
+            </div>
+            <div class="swiper-slide box">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="images/pic-3.png" alt="">
+                    <div class="user-info">
+                        <h3>Kavata Joy</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+                <p>A big thank you from Kavata and me for the incredible work you and the team at Amazing Memories did on the decor for our music party and wedding. The whole experience was real smooth and hassle-free for us and the outcome was beautiful. Thank you for making such a precious time in our lives even more memorable.</p>
+            </div>
+            <div class="swiper-slide box">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="images/pic-4.png" alt="">
+                    <div class="user-info">
+                        <h3>Phylis Nyendo</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+                <p>The Amazing Memories team is very supportive and shows a high amount of professionalism at all times. We have worked with the team on many events and are looking forward to working with them on future events.</p>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- Link Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    // Responsive menu
+    let menu = document.querySelector('#menu-bars');
+    let navbar = document.querySelector('.navbar');
+
+    menu.onclick = () => {
+      menu.classList.toggle('fa-times');
+      navbar.classList.toggle('active');
+    }
+
+    // Theme toggler
+    let themeToggler = document.querySelector('.theme-toggler');
+    let toggleBtn = document.querySelector('.toggle-btn');
+
+    toggleBtn.onclick = () => {
+      themeToggler.classList.toggle('active');
+    }
+
+    window.onscroll = () => {
+      menu.classList.remove('fa-times');
+      navbar.classList.remove('active');
+      themeToggler.classList.remove('active');
+    }
+
+    document.querySelectorAll('.theme-toggler .theme-btn').forEach(btn => {
+      btn.onclick = () => {
+        let color = btn.style.background;
+        document.querySelector(':root').style.setProperty('--main-color', color);
+      }
+    });
+
+    // Home slider
+    var swiper = new Swiper(".home-slider", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2,
+        slideShadows: true,
+      },
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      }
+    });
+
+    // Review slider
+    var swiper = new Swiper(".review-slider", {
+      slidesPerView: 1,
+      grabCursor: true,
+      loop: true,
+      spaceBetween: 10,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        700: {
+          slidesPerView: 2,
+        },
+        1050: {
+          slidesPerView: 3,
+        },
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      }
+    });
+</script>
+
+</body>
+</html>
