@@ -377,7 +377,30 @@
 
 <!-- review section ends -->
 
-<!-- contact section starts  -->
+
+
+<!-- contact section starts -->
+
+<section class="contact" id="contact">
+
+    <h1 class="heading"> <span>contact</span> us </h1>
+
+    <form action="process_form.php" method="POST" class="contact-form">
+        <div class="inputBox">
+            <input type="text" name="name" placeholder="name">
+            <input type="email" name="email" placeholder="email">
+        </div>
+        <div class="inputBox">
+            <input type="tel" name="number" placeholder="number">
+            <input type="text" name="subject" placeholder="subject">
+        </div>
+        <textarea name="message" placeholder="your message" id="" cols="30" rows="10"></textarea>
+        <!-- Add a hidden input field for CSRF token -->
+        <!-- This is just a basic example; in a real application, you would generate a CSRF token securely -->
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+        <input type="submit" value="send message" class="btn">
+    </form>
+
 
 
 
